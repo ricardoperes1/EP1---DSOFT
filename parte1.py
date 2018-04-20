@@ -6,6 +6,8 @@ print("2: Remover Item")
 print("3: Alterar Item")
 print("4: Imprimir Estoque")
 
+print("No git! Vai Corinthians!!!")
+
 #escolha do usuario
 menu_inicial= int(input("Escolha o Numero: "))
 
