@@ -37,7 +37,7 @@ elif menu_inicial == 1:
     while preco < 0:
         print("Preço Inválido")
         preco = float(input("Preço do Produto:"))
-    produtos[novo_produto]= {"Quantidade":quantidade, "Preço": preco}
+    produtos[novo_produto]= {"Quantidade":quantidade, "Preco": preco}
     print("Item Adicionado")
 
 elif menu_inicial == 2:
@@ -63,7 +63,7 @@ elif menu_inicial == 4:
     while produto_alterado not in produtos:
         print("Produto Não Encontrado")
         produto_alterado = input("Nome do Produto: ")    
-    print('Preço Registrado: {0}'.format(produtos[produto_alterado]['Preço']))
+    print('Preço Registrado: {0}'.format(produtos[produto_alterado]['Preco']))
     novo_preco = float(input("Novo Preço: "))
     produtos[produto_alterado] = {"Quantidade":novo_preco}
     print("Preço Alterado")
@@ -73,7 +73,7 @@ elif menu_inicial == 5:
         print(' ')
         print(p)
         print("Estoque: {0}".format(q["Quantidade"]))
-        print("Preço: {0}".format(q["Preço"]))
+        print("Preço: {0}".format(q["Preco"]))
         print(' ')
 
 elif menu_inicial == 6:
@@ -90,7 +90,7 @@ elif menu_inicial == 6:
 elif menu_inicial == 7:
     valor = 0
     for e in produtos:
-        valor += produtos[e]["Quantidade"] * produtos[e]["Preço"]
+        valor += produtos[e]["Quantidade"] * produtos[e]["Preco"]
     print("{0} Reais".format(valor))
 
 
