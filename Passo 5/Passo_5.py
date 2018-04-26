@@ -8,15 +8,18 @@ print('0: Acessar Estoque de Uma Loja')
 print('1: Cadastrar Nova Loja')
 login = int(input('Escolha o Número: '))
 
+
 #========================= ESCOLHA DA LOJA ====================================
 
 if login == 0:
     loja = input("Escolha a unidade que você deseja acessar: ")
+    loja = loja.lower()
     with open('{0}.json'.format(loja),'r') as dados:#abre o arquivo
         produtos = json.load(dados)#lê o arquivo e salva na variável 'produtos'em dict
 
 else:
     loja = input('Qual é o nome da nova loja: ')
+    loja = loja.lower()
     with open('{0}.json'.format(loja),'w') as dados:
         dados.write('{}')
     with open('{0}.json'.format(loja),'r') as dados:#abre o arquivo
@@ -28,6 +31,7 @@ c = True
 
 while c:
     #mostra o que cada número é
+    print(" ")
     print("0: Sair")
     print("1: Adicionar Item")
     print("2: Remover Item")
@@ -49,40 +53,47 @@ while c:
         
     elif menu_inicial == 1:
         novo_produto = input("Novo Produto: ")
-        quantidade = int(input("Quantidade Inicial: "))
+        novo_produto = novo_produto.lower()
+        quantidade = float(input("Quantidade Inicial: "))
         preco = float(input("Preço do Produto: "))       
         while preco < 0:
             print("Preço Inválido")
-            preco = float(input("Preço do Produto:"))
+            preco = float(input("Preço do Produto: "))
         produtos[novo_produto]= {"Quantidade":quantidade, "Preco": preco}
         print("Item Adicionado")
                 
     elif menu_inicial == 2:
         remove_produto = input("Retirar o Produto: ")
+        remove_produto = remove_produto.lower()
         while remove_produto not in produtos:
             print("Produto Não Encontrado")
-            remove_produto = input("Nome do Produto: ")    
+            remove_produto = input("Nome do Produto: ") 
+            remove_produto = remove_produto.lower()
         del produtos[remove_produto]
         print("Item Removido")
                         
     elif menu_inicial == 3:
         produto_alterado = input("Nome do Produto: ")
+        produto_alterado = produto_alterado.lower()
         while produto_alterado not in produtos:
             print("Produto Não Encontrado")
-            produto_alterado = input("Nome do Produto: ")    
+            produto_alterado = input("Nome do Produto: ")  
+            produto_alterado = produto_alterado.lower()
         print('Quantidade Registrada: {0}'.format(produtos[produto_alterado]['Quantidade']))
-        nova_quantidade = int(input("Quantidade: "))
-        produtos[produto_alterado] = {"Quantidade":produtos[produto_alterado]['Quantidade'] + nova_quantidade}
+        nova_quantidade = float(input("Quantidade: "))
+        produtos[produto_alterado]["Quantidade"] = produtos[produto_alterado]['Quantidade'] + nova_quantidade
         print('Quantidade Alterada')
         
     elif menu_inicial == 4:
         produto_alterado = input("Nome do Produto: ")
+        produto_alterado = produto_alterado.lower()
         while produto_alterado not in produtos:
             print("Produto Não Encontrado")
-            produto_alterado = input("Nome do Produto: ")    
+            produto_alterado = input("Nome do Produto: ") 
+            produto_alterado = produto_alterado.lower()
         print('Preço Registrado: {0}'.format(produtos[produto_alterado]['Preco']))
         novo_preco = float(input("Novo Preço: "))
-        produtos[produto_alterado] = {"Quantidade":novo_preco}
+        produtos[produto_alterado]["Preco"] = novo_preco
         print("Preço Alterado")
                                         
     elif menu_inicial == 5:
